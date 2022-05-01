@@ -1,3 +1,5 @@
 server.js
 config.env
 node_modules
+connection.js
+.env
