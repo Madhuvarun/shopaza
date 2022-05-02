@@ -1,0 +1,110 @@
+.navbar_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0.7rem; */
+  padding: 20px 60px 10px 10px;
+  background-color: #212121;
+}
+.navbar_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar_text {
+  font-size: 28px;
+  font-style: italic;
+  color: #fff;
+  font-weight: 500;
+}
+.navbar_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.5;
+  background-color: inherit;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.navbar_search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.navbar_search_input {
+  flex: 1;
+}
+.navbar_search_input input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  outline: none;
+  color: #000;
+  font-weight: 600;
+}
+.navbar_search_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #008060;
+  align-self: stretch;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.navbar_search_icon button {
+  align-self: center;
+  background-color: inherit;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+.navbar_search_icon button:hover {
+  opacity: 0.9;
+}
+.navbar_search_icon svg {
+  color: #fff;
+  padding-left: 4px;
+  align-self: center;
+}
+.navbar_right {
+  /* border: 1px solid red; */
+}
+.navbar_links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+.signup_link button:hover,
+.login_link button:hover {
+  opacity: 0.8;
+}
+.cart_container {
+  /* border: 1px solid red; */
+  position: relative;
+  cursor: pointer;
+}
+.cart_button {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+.cart_quantity {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #008060;
+  padding: 2px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+}
