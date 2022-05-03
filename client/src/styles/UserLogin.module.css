@@ -17,6 +17,8 @@
   display: flex;
   justify-content: center;
 }
+.name_container {
+}
 .email_container {
 }
 .password_container {
@@ -50,8 +52,13 @@
 }
 .new_user a,
 .forgot_password a {
-  color: #007fff;
+  color: #008060;
   text-decoration: none;
 }
+.new_user a:hover,
+.forgot_password a:hover {
+  text-decoration: underline;
+}
+
 .links {
 }

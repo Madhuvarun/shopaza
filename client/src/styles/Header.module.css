@@ -17,6 +17,11 @@
   color: #fff;
   font-weight: 500;
 }
+.navbar_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .navbar_center {
   display: flex;
   align-items: center;
@@ -81,7 +86,6 @@
   opacity: 0.8;
 }
 .cart_container {
-  /* border: 1px solid red; */
   position: relative;
   cursor: pointer;
 }
@@ -102,7 +106,7 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background-color: #008060;
+  background-color: red;
   padding: 2px;
   border-radius: 50%;
   color: #fff;

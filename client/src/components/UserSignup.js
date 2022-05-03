@@ -1,51 +1,51 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "../styles/UserSignup.module.css";
 import { Button, OutlinedInput } from "@mui/material";
-import { useState } from "react";
-import axios from "axios";
+import Axios from "../axios";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function UserSignup(props) {
-  const [userDetails, setUserDetails] = useState({});
-
-  function handleName(e) {
-    setUserDetails({
-      ...userDetails,
-      last_name: e.target.value,
-    });
-  }
-  function handleEmail(e) {
-    setUserDetails({
-      ...userDetails,
-      email_address: e.target.value,
-    });
-  }
-  function handlePassword(e) {
-    setUserDetails({
-      ...userDetails,
-      password: e.target.value,
-    });
-  }
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
   async function handleFormSubmission(e) {
-    if (userDetails.name.trim() === "") {
+    if (nameRef.current.value.trim() === "") {
       toast("Name cannot be empty");
       return;
     }
-    if (userDetails.email.trim() === "") {
+    if (emailRef.current.value.trim() === "") {
       toast("Email cannot be empty");
       return;
     }
-    if (userDetails.password.trim() === "") {
+    if (passwordRef.current.value.trim() === "") {
       toast("Password cannot be empty");
       return;
     }
-    const response = await axios.post("http://localhost:3001/auth/login", {
-      first_name: userDetails.first_name,
-      last_name: userDetails.last_name,
-      email_address: userDetails.email_address,
-      password: userDetails.password,
+    const response = await Axios.post("/auth/signup", {
+      name: nameRef.current.value.trim(),
+      email: emailRef.current.value.trim(),
+      password: passwordRef.current.value.trim(),
     });
+
+    if (
+      response.data.hasOwnProperty("status") &&
+      response.data.status === "failure"
+    ) {
+      toast(response.data.description, {
+        style: {
+          backgroundColor: "tomato",
+          color: "#fff",
+        },
+      });
+    } else if (response.data.status === "success") {
+      toast(response.data.description, {
+        style: {
+          backgroundColor: "mediumseagreen",
+          color: "#fff",
+        },
+      });
+    }
   }
   return (
     <div className={styles.page}>
@@ -60,7 +60,7 @@ export default function UserSignup(props) {
               placeholder="name"
               size="small"
               style={{ width: 300 }}
-              onChange={(e) => handleName(e)}
+              inputRef={nameRef}
             />
           </div>
 
@@ -69,7 +69,7 @@ export default function UserSignup(props) {
               placeholder="email address"
               size="small"
               style={{ width: 300 }}
-              onChange={(e) => handleEmail(e)}
+              inputRef={emailRef}
             />
           </div>
 
@@ -79,7 +79,7 @@ export default function UserSignup(props) {
               type="password"
               size="small"
               style={{ width: 300 }}
-              onChange={(e) => handlePassword(e)}
+              inputRef={passwordRef}
             />
           </div>
           <div className={styles.submit_btn_container}>
@@ -99,7 +99,13 @@ export default function UserSignup(props) {
           </div>
         </div>
       </div>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            borderRadius: "2px",
+          },
+        }}
+      />
     </div>
   );
 }

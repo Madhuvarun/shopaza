@@ -17,6 +17,8 @@
   display: flex;
   justify-content: center;
 }
+.name_container {
+}
 .email_container {
 }
 .password_container {
@@ -46,6 +48,8 @@
   text-align: center;
 }
 .existing_user a {
-  color: #007fff;
-  text-decoration: none;
+  color: #008060;
+}
+.existing_user a:hover {
+  text-decoration: underline;
 }
