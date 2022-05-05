@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const joi = require("joi");
 
 const authController = require("../controllers/authController");
 

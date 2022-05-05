@@ -19,23 +19,30 @@ export default function UserLogin(props) {
       toast("password cannot be empty");
       return;
     }
-
-    const response = await Axios.post("/auth/login", {
-      email: emailRef.current.value.trim(),
-      password: passwordRef.current.value.trim(),
-    });
-
-    if (response.data.status === "failure") {
-      toast(response.data.description, {
+    try {
+      const response = await Axios.post("/auth/login", {
+        email: emailRef.current.value.trim(),
+        password: passwordRef.current.value.trim(),
+      });
+      if (response.data.status === "failure") {
+        toast(response.data.description, {
+          style: {
+            backgroundColor: "tomato",
+            color: "#fff",
+          },
+        });
+      } else if (response.data.status === "success") {
+        toast(response.data.description, {
+          style: {
+            backgroundColor: "mediumseagreen",
+            color: "#fff",
+          },
+        });
+      }
+    } catch (err) {
+      toast(err.message, {
         style: {
           backgroundColor: "tomato",
-          color: "#fff",
-        },
-      });
-    } else if (response.data.status === "success") {
-      toast(response.data.description, {
-        style: {
-          backgroundColor: "mediumseagreen",
           color: "#fff",
         },
       });
