@@ -9,6 +9,8 @@ import { Button } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 function Header(props) {
+  const { handleSearch, searchOnClick } = props;
+
   return (
     <div className={styles.navbar_container}>
       <div className={styles.navbar_left}>
@@ -24,10 +26,14 @@ function Header(props) {
       <div className={styles.navbar_center}>
         <div className={styles.navbar_search}>
           <div className={styles.navbar_search_input}>
-            <input type="search" placeholder="search products" />
+            <input
+              type="search"
+              placeholder="search products"
+              onChange={(e) => handleSearch(e)}
+            />
           </div>
           <div className={styles.navbar_search_icon}>
-            <button>
+            <button onClick={searchOnClick}>
               <SearchOutlinedIcon fontSize="large" />
             </button>
           </div>
