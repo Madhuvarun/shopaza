@@ -8,8 +8,16 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Button } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
+import { useSelector } from "react-redux";
+
 function Header(props) {
   const { handleSearch, searchOnClick } = props;
+  const cartItemCount = useSelector((state) =>
+    state.cartReducer.cartItems.reduce(
+      (accumulator, current) => accumulator + current.quantity,
+      0
+    )
+  );
 
   return (
     <div className={styles.navbar_container}>
@@ -70,7 +78,7 @@ function Header(props) {
                 sx={{ color: "#fff" }}
               />
             </button>
-            <span className={styles.cart_quantity}>20</span>
+            <span className={styles.cart_quantity}>{cartItemCount}</span>
           </div>
         </div>
       </div>
